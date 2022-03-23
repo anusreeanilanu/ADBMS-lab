@@ -1,0 +1,17 @@
+CREATE DATABASE emp;
+USE emp;
+CREATE TABLE employee(empno int(10) PRIMARY KEY NOT NULL,empname VARCHAR(20) NOT NULL,dept VARCHAR(20) NOT NULL,salary INT NOT NULL,DOB date NOT NULL,Branch VARCHAR(50) NOT NULL);
+INSERT INTO employee (empno, empname, dept,salary,DOB,Branch) VALUES(101, 'Amit', 'production',45000,'2000-03-12','Bangalore');
+INSERT INTO employee (empno, empname, dept,salary,DOB,Branch) VALUES(102, 'Amit', 'HR',70000,'2002-07-03','Bangalore');
+INSERT INTO employee (empno, empname, dept,salary,DOB,Branch) VALUES(103, 'Sunitha', 'Manager',120000,'2001-01-11','Mysore');
+INSERT INTO employee (empno, empname, dept,salary,DOB,Branch) VALUES(105, 'Sunitha', 'IT',67000,'2001-08-01','Mysore');
+INSERT INTO employee (empno, empname, dept,salary,DOB,Branch) VALUES(106, 'Mahesh', 'Civil',145000,'2003-09-20','Mumbai');
+SELECT * FROM employee;
+SELECT empno,salary FROM employee;
+SELECT AVG(salary)FROM employee;
+SELECT COUNT(empno)FROM employee;
+SELECT count(DISTINCT empname)FROM employee;
+SELECT sum(salary),empname,COUNT(empname) FROM employee GROUP BY empname HAVING COUNT(empname)>1;
+SELECT * FROM employee WHERE salary>120000;  
+SELECT empname FROM employee ORDER BY empname DESC;
+SELECT * FROM employee WHERE empname="Amit" AND salary>55000;
