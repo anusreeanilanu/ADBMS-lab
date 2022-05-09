@@ -374,6 +374,39 @@ student
 { "degree" : "BCA" }
 { "degree" : "BA" }
 { "degree" : "BCA" }
+db.student.find({"degree":"BCA","CGPA":{$gt:6,$lt:7.5}}).pretty()
+{
+        "_id" : ObjectId("6278a4152a977a995f22ef1d"),
+        "sro" : 100,
+        "sname" : "Rahul",
+        "degree" : "BCA",
+        "Sem" : "second",
+        "CGPA" : 6.5
+}
+{
+        "_id" : ObjectId("6278a5ed2a977a995f22ef22"),
+        "sro" : 105,
+        "sname" : "Anjali",
+        "degree" : "BCA",
+        "Sem" : "Sixth",
+        "CGPA" : 6.3
+}
+{
+        "_id" : ObjectId("6278a6012a977a995f22ef23"),
+        "sro" : 106,
+        "sname" : "Anmu",
+        "degree" : "BCA",
+        "Sem" : "Sixth",
+        "CGPA" : 6.9
+}
+{
+        "_id" : ObjectId("6278a6652a977a995f22ef26"),
+        "sro" : 109,
+        "sname" : "Abhilash",
+        "degree" : "BCA",
+        "Sem" : "First",
+        "CGPA" : 7.4
+}
 >
 
 
