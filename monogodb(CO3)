@@ -363,6 +363,17 @@ student
         "Sem" : "Sixth",
         "CGPA" : 7.9
 }
+ db.student.find({},{"degree":1,"_id":0}).pretty()
+{ "degree" : "BCA" }
+{ "degree" : "BCA" }
+{ "degree" : "BSc" }
+{ "degree" : "BSc" }
+{ "degree" : "BA" }
+{ "degree" : "BCA" }
+{ "degree" : "BCA" }
+{ "degree" : "BCA" }
+{ "degree" : "BA" }
+{ "degree" : "BCA" }
 >
 
 
