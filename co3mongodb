@@ -1,0 +1,115 @@
+ use candidate
+switched to db candidate
+> db.createCollection("details")
+{ "ok" : 1 }
+> db.details.insert({"name":"Rahul","age":21,"gender":"M","amnt":10000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Ram","age":26,"gender":"M","amnt":40000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Ramu","age":27,"gender":"M","amnt":50000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Ammu","age":27,"gender":"F","amnt":50000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Anju","age":20,"gender":"F","amnt":30000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Anjali","age":29,"gender":"F","amnt":40000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Ajal,"age":22,"gender":"M","amnt":10000})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:33
+> db.details.insert({"name":"Ajal","age":22,"gender":"M","amnt":10000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Anjima","age":25,"gender":"F","amnt":20000})
+WriteResult({ "nInserted" : 1 })
+> db.details.insert({"name":"Appu","age":25,"gender":"M","amnt":20000})
+WriteResult({ "nInserted" : 1 })
+> db.details.find().pretty()
+{
+        "_id" : ObjectId("628b5e44d2675ea4253cb845"),
+        "name" : "Rahul",
+        "age" : 21,
+        "gender" : "M",
+        "amnt" : 10000
+}
+{
+        "_id" : ObjectId("628b5e5ad2675ea4253cb846"),
+        "name" : "Ram",
+        "age" : 26,
+        "gender" : "M",
+        "amnt" : 40000
+}
+{
+        "_id" : ObjectId("628b5e70d2675ea4253cb847"),
+        "name" : "Ramu",
+        "age" : 27,
+        "gender" : "M",
+        "amnt" : 50000
+}
+{
+        "_id" : ObjectId("628b5e95d2675ea4253cb848"),
+        "name" : "Ammu",
+        "age" : 27,
+        "gender" : "F",
+        "amnt" : 50000
+}
+{
+        "_id" : ObjectId("628b5ea6d2675ea4253cb849"),
+        "name" : "Anju",
+        "age" : 20,
+        "gender" : "F",
+        "amnt" : 30000
+}
+{
+        "_id" : ObjectId("628b5ed0d2675ea4253cb84a"),
+        "name" : "Anjali",
+        "age" : 29,
+        "gender" : "F",
+        "amnt" : 40000
+}
+{
+        "_id" : ObjectId("628b5f05d2675ea4253cb84b"),
+        "name" : "Ajal",
+        "age" : 22,
+        "gender" : "M",
+        "amnt" : 10000
+}
+{
+        "_id" : ObjectId("628b5f2ad2675ea4253cb84c"),
+        "name" : "Anjima",
+        "age" : 25,
+        "gender" : "F",
+        "amnt" : 20000
+}
+{
+        "_id" : ObjectId("628b5f3fd2675ea4253cb84d"),
+        "name" : "Appu",
+        "age" : 25,
+        "gender" : "M",
+        "amnt" : 20000
+}
+> db.details.find({$or:[{"gender":"M"},{"age":{$lt:25}}]})
+{ "_id" : ObjectId("628b5e44d2675ea4253cb845"), "name" : "Rahul", "age" : 21, "gender" : "M", "amnt" : 10000 }
+{ "_id" : ObjectId("628b5e5ad2675ea4253cb846"), "name" : "Ram", "age" : 26, "gender" : "M", "amnt" : 40000 }
+{ "_id" : ObjectId("628b5e70d2675ea4253cb847"), "name" : "Ramu", "age" : 27, "gender" : "M", "amnt" : 50000 }
+{ "_id" : ObjectId("628b5ea6d2675ea4253cb849"), "name" : "Anju", "age" : 20, "gender" : "F", "amnt" : 30000 }
+{ "_id" : ObjectId("628b5f05d2675ea4253cb84b"), "name" : "Ajal", "age" : 22, "gender" : "M", "amnt" : 10000 }
+{ "_id" : ObjectId("628b5f3fd2675ea4253cb84d"), "name" : "Appu", "age" : 25, "gender" : "M", "amnt" : 20000 }
+> db.details.aggregate([{$group:{_id:"$gender",'total amnt':{$sum:'$amnt'}}}])
+{ "_id" : "M", "total amnt" : 130000 }
+{ "_id" : "F", "total amnt" : 140000 }
+> db.details.aggregate([{$match:{'age:{$lt:25}},{$group:{_id:"$gender",'average amnt':{$avg:'$amnt'}}}])
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:70
+> db.details.aggregate([{$match:{'age':{$lt:25}},{$group:{_id:"$gender",'average amnt':{$avg:'$amnt'}}}])
+...
+...
+> db.details.aggregate([{$match:{'age':{$lt:25}}},{$group:{_id:"$gender",'average amnt':{$avg:'$amnt'}}}])
+{ "_id" : "M", "average amnt" : 10000 }
+{ "_id" : "F", "average amnt" : 30000 }
+> db.details.aggregate([{$match:{'age':{$gt:25}}},{$group:{_id:"$gender",'average amnt':{$avg:'$amnt'}}}])
+{ "_id" : "M", "average amnt" : 45000 }
+{ "_id" : "F", "average amnt" : 45000 }
+> db.details.aggregate([{$match:{'age':{$gt:25}}},{$group:{_id:"$gender",'average amnt':{$avg:'$amnt'}}},{$sort:{avg:1}}])
+{ "_id" : "M", "average amnt" : 45000 }
+{ "_id" : "F", "average amnt" : 45000 }
+>
