@@ -1,0 +1,229 @@
+install mongodump
+shell(backup and restore)
+ show dbs
+admin      0.000GB
+candidate  0.000GB
+collegs    0.000GB
+config     0.000GB
+employee   0.000GB
+local      0.000GB
+stud1      0.000GB
+student    0.000GB
+> use employee
+switched to db employee
+> db.dropDatabase()
+{ "ok" : 1 }
+> show dbs
+admin      0.000GB
+candidate  0.000GB
+collegs    0.000GB
+config     0.000GB
+local      0.000GB
+stud1      0.000GB
+student    0.000GB
+> show dbs
+admin      0.000GB
+candidate  0.000GB
+collegs    0.000GB
+config     0.000GB
+employee   0.000GB
+local      0.000GB
+stud1      0.000GB
+student    0.000GB
+
+admin command prompt
+
+change directory
+cd C:\Program Files\MongoDB\Tools\100\bin
+
+C:\Program Files\MongoDB\Tools\100\bin>mongodump
+
+2022-05-31T10:57:54.291+0530    writing admin.system.version to dump\admin\system.version.bson
+2022-05-31T10:57:54.294+0530    done dumping admin.system.version (1 document)
+2022-05-31T10:57:54.295+0530    writing candidate.details to dump\candidate\details.bson
+2022-05-31T10:57:54.308+0530    done dumping candidate.details (9 documents)
+2022-05-31T10:57:54.309+0530    writing stud1.stud123 to dump\stud1\stud123.bson
+2022-05-31T10:57:54.324+0530    done dumping stud1.stud123 (0 documents)
+2022-05-31T10:57:54.325+0530    writing stud1.stud12 to dump\stud1\stud12.bson
+2022-05-31T10:57:54.328+0530    done dumping stud1.stud12 (0 documents)
+2022-05-31T10:57:54.329+0530    writing stud1.stud1 to dump\stud1\stud1.bson
+2022-05-31T10:57:54.333+0530    done dumping stud1.stud1 (0 documents)
+2022-05-31T10:57:54.334+0530    writing student.stud to dump\student\stud.bson
+2022-05-31T10:57:54.344+0530    done dumping student.stud (0 documents)
+2022-05-31T10:57:54.345+0530    writing collegs.collegs to dump\collegs\collegs.bson
+2022-05-31T10:57:54.364+0530    done dumping collegs.collegs (0 documents)
+2022-05-31T10:57:54.599+0530    writing student.student to dump\student\student.bson
+2022-05-31T10:57:54.600+0530    writing collegs.colleges to dump\collegs\colleges.bson
+2022-05-31T10:57:54.600+0530    writing employee.employee to dump\employee\employee.bson
+2022-05-31T10:57:54.632+0530    done dumping collegs.colleges (10 documents)
+2022-05-31T10:57:54.663+0530    done dumping employee.employee (2 documents)
+2022-05-31T10:57:54.676+0530    done dumping student.student (10 documents)
+
+restore
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore
+
+2022-05-31T11:01:11.689+0530    using default 'dump' directory
+2022-05-31T11:01:11.691+0530    preparing collections to restore from
+2022-05-31T11:01:11.697+0530    reading metadata for stud1.stud12 from dump\stud1\stud12.metadata.json
+2022-05-31T11:01:11.697+0530    reading metadata for student.stud from dump\student\stud.metadata.json
+2022-05-31T11:01:11.697+0530    reading metadata for student.student from dump\student\student.metadata.json
+2022-05-31T11:01:11.698+0530    reading metadata for stud1.stud1 from dump\stud1\stud1.metadata.json
+2022-05-31T11:01:11.698+0530    reading metadata for stud1.stud123 from dump\stud1\stud123.metadata.json
+2022-05-31T11:01:11.699+0530    reading metadata for candidate.details from dump\candidate\details.metadata.json
+2022-05-31T11:01:11.699+0530    reading metadata for collegs.colleges from dump\collegs\colleges.metadata.json
+2022-05-31T11:01:11.699+0530    reading metadata for collegs.collegs from dump\collegs\collegs.metadata.json
+2022-05-31T11:01:11.700+0530    reading metadata for employee.employee from dump\employee\employee.metadata.json
+2022-05-31T11:01:11.702+0530    restoring to existing collection collegs.colleges without dropping
+2022-05-31T11:01:11.702+0530    restoring collegs.colleges from dump\collegs\colleges.bson
+2022-05-31T11:01:11.702+0530    restoring to existing collection student.student without dropping
+2022-05-31T11:01:11.703+0530    restoring student.student from dump\student\student.bson
+2022-05-31T11:01:11.703+0530    restoring to existing collection candidate.details without dropping
+2022-05-31T11:01:11.703+0530    restoring candidate.details from dump\candidate\details.bson
+2022-05-31T11:01:11.859+0530    restoring employee.employee from dump\employee\employee.bson
+2022-05-31T11:01:11.891+0530    finished restoring employee.employee (2 documents, 0 failures)
+2022-05-31T11:01:11.893+0530    restoring to existing collection stud1.stud1 without dropping
+2022-05-31T11:01:11.893+0530    restoring stud1.stud1 from dump\stud1\stud1.bson
+2022-05-31T11:01:11.905+0530    finished restoring stud1.stud1 (0 documents, 0 failures)
+2022-05-31T11:01:11.905+0530    restoring to existing collection stud1.stud12 without dropping
+2022-05-31T11:01:11.908+0530    restoring stud1.stud12 from dump\stud1\stud12.bson
+2022-05-31T11:01:11.921+0530    finished restoring stud1.stud12 (0 documents, 0 failures)
+2022-05-31T11:01:11.921+0530    restoring to existing collection stud1.stud123 without dropping
+2022-05-31T11:01:11.922+0530    restoring stud1.stud123 from dump\stud1\stud123.bson
+2022-05-31T11:01:11.936+0530    finished restoring stud1.stud123 (0 documents, 0 failures)
+2022-05-31T11:01:11.936+0530    restoring to existing collection student.stud without dropping
+2022-05-31T11:01:11.936+0530    restoring student.stud from dump\student\stud.bson
+2022-05-31T11:01:11.952+0530    finished restoring student.stud (0 documents, 0 failures)
+2022-05-31T11:01:11.952+0530    restoring to existing collection collegs.collegs without dropping
+2022-05-31T11:01:11.952+0530    restoring collegs.collegs from dump\collegs\collegs.bson
+2022-05-31T11:01:11.966+0530    finished restoring collegs.collegs (0 documents, 0 failures)
+2022-05-31T11:01:12.089+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a4152a977a995f22ef1d') }
+2022-05-31T11:01:12.090+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a45d2a977a995f22ef1e') }
+2022-05-31T11:01:12.093+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a5112a977a995f22ef1f') }
+2022-05-31T11:01:12.094+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5e44d2675ea4253cb845') }
+2022-05-31T11:01:12.095+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5e5ad2675ea4253cb846') }
+2022-05-31T11:01:12.097+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a5ab2a977a995f22ef20') }
+2022-05-31T11:01:12.098+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a5c82a977a995f22ef21') }
+2022-05-31T11:01:12.102+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a5ed2a977a995f22ef22') }
+2022-05-31T11:01:12.104+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5e70d2675ea4253cb847') }
+2022-05-31T11:01:12.105+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5e95d2675ea4253cb848') }
+2022-05-31T11:01:12.107+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a6012a977a995f22ef23') }
+2022-05-31T11:01:12.108+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a6172a977a995f22ef24') }
+2022-05-31T11:01:12.110+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5ea6d2675ea4253cb849') }
+2022-05-31T11:01:12.113+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5ed0d2675ea4253cb84a') }
+2022-05-31T11:01:12.115+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a6452a977a995f22ef25') }
+2022-05-31T11:01:12.117+0530    continuing through error: E11000 duplicate key error collection: student.student index: _id_ dup key: { _id: ObjectId('6278a6652a977a995f22ef26') }
+2022-05-31T11:01:12.118+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5f05d2675ea4253cb84b') }
+2022-05-31T11:01:12.119+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628de68fd69ccd26214956c9') }
+2022-05-31T11:01:12.120+0530    finished restoring student.student (0 documents, 10 failures)
+2022-05-31T11:01:12.121+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5f2ad2675ea4253cb84c') }
+2022-05-31T11:01:12.122+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628de714d69ccd26214956ca') }
+2022-05-31T11:01:12.124+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628de769d69ccd26214956cb') }
+2022-05-31T11:01:12.125+0530    continuing through error: E11000 duplicate key error collection: candidate.details index: _id_ dup key: { _id: ObjectId('628b5f3fd2675ea4253cb84d') }
+2022-05-31T11:01:12.125+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628de7b2d69ccd26214956cc') }
+2022-05-31T11:01:12.126+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628de846d69ccd26214956cd') }
+2022-05-31T11:01:12.126+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628dea91d69ccd26214956ce') }
+2022-05-31T11:01:12.126+0530    finished restoring candidate.details (0 documents, 9 failures)
+2022-05-31T11:01:12.126+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628deabcd69ccd26214956cf') }
+2022-05-31T11:01:12.126+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628deafbd69ccd26214956d0') }
+2022-05-31T11:01:12.126+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628deb5ad69ccd26214956d1') }
+2022-05-31T11:01:12.127+0530    continuing through error: E11000 duplicate key error collection: collegs.colleges index: _id_ dup key: { _id: ObjectId('628dec2fd69ccd26214956d2') }
+2022-05-31T11:01:12.127+0530    finished restoring collegs.colleges (0 documents, 10 failures)
+2022-05-31T11:01:12.127+0530    no indexes to restore for collection stud1.stud12
+2022-05-31T11:01:12.127+0530    no indexes to restore for collection student.student
+2022-05-31T11:01:12.128+0530    no indexes to restore for collection candidate.details
+2022-05-31T11:01:12.128+0530    no indexes to restore for collection stud1.stud123
+2022-05-31T11:01:12.128+0530    no indexes to restore for collection stud1.stud1
+2022-05-31T11:01:12.129+0530    no indexes to restore for collection student.stud
+2022-05-31T11:01:12.129+0530    no indexes to restore for collection collegs.colleges
+2022-05-31T11:01:12.129+0530    no indexes to restore for collection collegs.collegs
+2022-05-31T11:01:12.130+0530    no indexes to restore for collection employee.employee
+2022-05-31T11:01:12.130+0530    2 document(s) restored successfully. 29 document(s) failed to restore.
+
+C:\Program Files\MongoDB\Tools\100\bin>mongodump --db=employee
+2022-05-31T11:05:25.212+0530    writing employee.employee to dump\employee\employee.bson
+2022-05-31T11:05:25.213+0530    done dumping employee.employee (2 documents)
+
+shell
+
+use employee
+switched to db employee
+> db.dropDatabase()
+{ "ok" : 1 }
+> show dbs
+admin      0.000GB
+candidate  0.000GB
+collegs    0.000GB
+config     0.000GB
+local      0.000GB
+stud1      0.000GB
+student    0.000GB
+
+admin
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore --db=employee dump/employee
+
+2022-05-31T11:08:59.661+0530    The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2022-05-31T11:08:59.662+0530    building a list of collections to restore from dump\employee dir
+2022-05-31T11:08:59.662+0530    reading metadata for employee.employee from dump\employee\employee.metadata.json
+2022-05-31T11:08:59.777+0530    restoring employee.employee from dump\employee\employee.bson
+2022-05-31T11:08:59.811+0530    finished restoring employee.employee (2 documents, 0 failures)
+2022-05-31T11:08:59.812+0530    no indexes to restore for collection employee.employee
+2022-05-31T11:08:59.812+0530    2 document(s) restored successfully. 0 document(s) failed to restore.
+
+collection(backup and restore)
+shell
+ use collegs
+switched to db collegs
+> show collections
+colleges
+collegs
+
+admin
+C:\Program Files\MongoDB\Tools\100\bin>mongodump --db collegs --collection colleges
+2022-05-31T11:14:59.346+0530    writing collegs.colleges to dump\collegs\colleges.bson
+2022-05-31T11:14:59.347+0530    done dumping collegs.colleges (10 documents)
+
+shell
+> use collegs
+switched to db collegs
+> db.colleges.drop()
+true
+
+admin
+
+C:\Program Files\MongoDB\Tools\100\bin>mongorestore --db collegs --collection colleges dump/collegs/colleges.bson
+
+2022-05-31T11:18:50.104+0530    checking for collection data in dump\collegs\colleges.bson
+2022-05-31T11:18:50.107+0530    reading metadata for collegs.colleges from dump\collegs\colleges.metadata.json
+2022-05-31T11:18:50.215+0530    restoring collegs.colleges from dump\collegs\colleges.bson
+2022-05-31T11:18:50.260+0530    finished restoring collegs.colleges (10 documents, 0 failures)
+2022-05-31T11:18:50.260+0530    no indexes to restore for collection collegs.colleges
+2022-05-31T11:18:50.261+0530    10 document(s) restored successfully. 0 document(s) failed to restore.
+
+Monitoring
+
+C:\Program Files\MongoDB\Tools\100\bin>mongostat
+insert query update delete getmore command dirty used flushes vsize  res qrw arw net_in net_out conn                time
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.6k    4 May 31 11:23:49.038
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.6k    4 May 31 11:23:50.039
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.6k    4 May 31 11:23:51.039
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.7k    4 May 31 11:23:52.038
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.6k    4 May 31 11:23:53.039
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.6k    4 May 31 11:23:54.038
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.6k    4 May 31 11:23:55.039
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.7k    4 May 31 11:23:56.037
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.5k    4 May 31 11:23:57.039
+    *0    *0     *0     *0       0     3|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   308b   53.3k    4 May 31 11:23:58.037
+insert query update delete getmore command dirty used flushes vsize  res qrw arw net_in net_out conn                time
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.6k    4 May 31 11:23:59.037
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.6k    4 May 31 11:24:00.038
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.7k    4 May 31 11:24:01.037
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.6k    4 May 31 11:24:02.037
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.5k    4 May 31 11:24:03.038
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.7k    4 May 31 11:24:04.037
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.6k    4 May 31 11:24:05.038
+    *0    *0     *0     *0       0     1|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   112b   52.7k    4 May 31 11:24:06.036
+    *0    *0     *0     *0       0     0|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   111b   52.5k    4 May 31 11:24:07.038
+    *0    *0     *0     *0       0     3|0  0.0% 0.0%       0 1.38G 117M 0|0 0|0   308b   53.3k    4 May 31 11:24:08.037
+2022-05-31T11:24:08.851+0530    signal 'interrupt' received; forcefully terminating
+
+
