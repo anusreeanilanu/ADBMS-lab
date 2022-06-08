@@ -98,3 +98,50 @@ db.college.getIndexes()
                 "name" : "mark.maths_1"
         }
 ]
+//Test indexes
+
+ db.createCollection("comment")
+{ "ok" : 1 }
+> db.comment.insert({"Name":"Kunjan","post":"Welcome to ooty nice to meet you"})
+WriteResult({ "nInserted" : 1 })
+> db.comment.insert({"Name":"Kunju","post":"Hello Kannur"})
+WriteResult({ "nInserted" : 1 })
+> db.comment.insert({"Name":"Kunji","post":"Hai bab kunju is waiting"})
+WriteResult({ "nInserted" : 1 })
+> db.comment.insert({"Name":"Ramanan","post":" Chappathi nahi"})
+WriteResult({ "nInserted" : 1 })
+> db.comment.createIndex({post:"text"})
+{
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "createdCollectionAutomatically" : false,
+        "ok" : 1
+}
+> db.comment.getIndexes()
+[
+        {
+                "v" : 2,
+                "key" : {
+                        "_id" : 1
+                },
+                "name" : "_id_"
+        },
+        {
+                "v" : 2,
+                "key" : {
+                        "_fts" : "text",
+                        "_ftsx" : 1
+                },
+                "name" : "post_text",
+                "weights" : {
+                        "post" : 1
+                },
+                "default_language" : "english",
+                "language_override" : "language",
+                "textIndexVersion" : 3
+        }
+]
+
+ db.comment.find({$text:{$search:"\"Hello Kannur\""}})
+ 
+{ "_id" : ObjectId("62a0255af27406bdc172dd79"), "Name" : "Kunju", "post" : "Hello Kannur" }
