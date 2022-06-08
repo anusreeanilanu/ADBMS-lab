@@ -1,0 +1,72 @@
+ show dbs
+ 
+admin      0.000GB
+candidate  0.000GB
+collegs    0.000GB
+config     0.000GB
+employee   0.000GB
+local      0.000GB
+stud1      0.000GB
+student    0.000GB
+> show collections
+> use stud1
+
+switched to db stud1
+> show users
+
+> db.createUser({user:"Abc",pwd:"abc123",roles:[{role:"readWrite",db:"stud1"}]})
+
+Successfully added user: {
+        "user" : "Abc",
+        "roles" : [
+                {
+                        "role" : "readWrite",
+                        "db" : "stud1"
+                }
+        ]
+}
+
+ show roles
+ 
+{
+        "role" : "enableSharding",
+        "db" : "stud1",
+        "isBuiltin" : true,
+        "roles" : [ ],
+        "inheritedRoles" : [ ]
+}
+{
+        "role" : "read",
+        "db" : "stud1",
+        "isBuiltin" : true,
+        "roles" : [ ],
+        "inheritedRoles" : [ ]
+}
+{
+        "role" : "dbOwner",
+        "db" : "stud1",
+        "isBuiltin" : true,
+        "roles" : [ ],
+        "inheritedRoles" : [ ]
+}
+{
+        "role" : "readWrite",
+        "db" : "stud1",
+        "isBuiltin" : true,
+        "roles" : [ ],
+        "inheritedRoles" : [ ]
+}
+{
+        "role" : "userAdmin",
+        "db" : "stud1",
+        "isBuiltin" : true,
+        "roles" : [ ],
+        "inheritedRoles" : [ ]
+}
+{
+        "role" : "dbAdmin",
+        "db" : "stud1",
+        "isBuiltin" : true,
+        "roles" : [ ],
+        "inheritedRoles" : [ ]
+}
